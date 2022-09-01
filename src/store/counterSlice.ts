@@ -12,7 +12,7 @@ import { fetchCount } from "../api/counter";
  */
  export const incrementAsync = createAsyncThunk(
   'counter/asyncIncrement',
-  async (s: string) => {
+  async (s: number) => {
     const response = await fetchCount(s);
     return response.data;
   }
@@ -27,7 +27,7 @@ const counterSlice = createSlice({
     count: 0,
   },
   reducers: {
-    increment: (state, { payload}) => {
+    increment: (state, { payload }) => {
       const { step } = payload;
       state.count += step;
     },

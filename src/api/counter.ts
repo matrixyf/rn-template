@@ -3,7 +3,7 @@
  * @Date: 2022-09-01 20:59:22
  * @Description:
  */
-export function fetchCount(s: string): Promise<any> {
+export function fetchCount(s: number): Promise<any> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ data: s });

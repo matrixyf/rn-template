@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import { decrement, incrementAsync } from "../../store/counterSlice";
 import styles from './styles';
 
@@ -10,10 +10,10 @@ export default function Counter() {
 
   const count = useSelector((state: RootState) => state.counter.count);
   const [step, setStep] = useState('1');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   function dec() {
-    decrement();
+    dispatch(decrement());
   }
 
   function inc(s = 1) {
@@ -25,43 +25,53 @@ export default function Counter() {
     });
   }
 
+  function incAsync(s = 1) {
+    dispatch(incrementAsync(s));
+  }
+
   return (
     <View style={styles.container}>
-      <Text
-        onPress={dec}
-      >
-        -
-      </Text>
-      <Text>
-        {count}
-      </Text>
-      <Text
-        onPress={() => {
-          inc();
-        }}
-      >
-        +
-      </Text>
-      <Text
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Button
+          title='-'
+          onPress={dec}
+        />
+        <Text
+          style={{fontSize: 24,}}
+        >
+          {count}
+        </Text>
+        <Button
+          title='+'
+          onPress={() => {
+            inc();
+          }}
+        />
+      </View>
+      <View style={{flexDirection: 'row',}}>
+        <Text style={{fontSize: 24}}>
+          Step:
+        </Text>
+        <TextInput
+          style={{width: 50, textAlign: 'center', fontSize: 24}}
+          value={step}
+          onChangeText={(text) => {
+            setStep(text);
+          }}
+        />
+      </View>
+      <Button
+        title='increment by step'
         onPress={() => {
           inc(Number(step) || 1);
         }}
-      >
-        increment by
-      </Text>
-      <TextInput
-        value={step}
-        onChangeText={(text) => {
-          setStep(text);
+      />
+      <Button
+        title='increment async'
+        onPress={() => {
+          incAsync(Number(step) || 1);
         }}
       />
-      <Text
-        onPress={() => {
-          incrementAsync(step);
-        }}
-      >
-        increment async
-      </Text>
     </View>
   );
 }

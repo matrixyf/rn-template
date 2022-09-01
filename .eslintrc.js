@@ -14,6 +14,7 @@ module.exports = {
         'prettier/prettier': 'off',
         quotes: 'off',
         'no-use-before-define': 'off',
+        'jsx-quotes': 'off',
       },
     },
   ],
