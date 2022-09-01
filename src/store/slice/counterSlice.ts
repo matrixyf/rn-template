@@ -1,11 +1,6 @@
 
-/*
- * @Author: Hong.Zhang
- * @Date: 2022-08-28 22:52:42
- * @Description:
- */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCount } from "../api/counter";
+import { fetchCount } from "../../api/counter";
 
 /**
  * side effects actions, like API request

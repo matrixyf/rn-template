@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { decrement, incrementAsync } from "../../store/counterSlice";
+import { decrement, incrementAsync } from "../../store/slice/counterSlice";
 import styles from './styles';
 
 export default function Counter() {
