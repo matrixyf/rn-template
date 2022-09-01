@@ -1,14 +1,13 @@
+import React from 'react';
 import {Provider} from 'react-redux';
-import {Text} from 'react-native';
 import { store } from './store';
+import Counter from './features/couter';
 
 const App = () => {
 
   return (
     <Provider store={store}>
-      <Text>
-        place holder for your own page
-      </Text>
+      <Counter />
     </Provider>
   );
 };

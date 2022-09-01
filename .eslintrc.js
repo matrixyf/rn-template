@@ -12,6 +12,8 @@ module.exports = {
         'no-undef': 'off',
         'react/react-in-jsx-scope': 'off',
         'prettier/prettier': 'off',
+        quotes: 'off',
+        'no-use-before-define': 'off',
       },
     },
   ],
