@@ -3,17 +3,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchCount } from "../../api/counter";
 
 /**
- * side effects actions, like API request
- */
- export const incrementAsync = createAsyncThunk(
-  'counter/asyncIncrement',
-  async (s: number) => {
-    const response = await fetchCount(s);
-    return response.data;
-  }
-);
-
-/**
  * namespace, initlaState and common reducers.
  */
 const counterSlice = createSlice({
@@ -31,7 +20,7 @@ const counterSlice = createSlice({
     },
   },
   extraReducers: {
-    [incrementAsync.fulfilled.type]: (state, { payload }) => {
+    'counter/incrementAsync/fulfilled': (state, { payload }) => {
       state.count += payload;
     },
   },
@@ -39,9 +28,20 @@ const counterSlice = createSlice({
 
 
 /**
- * common actions generated according to common reducers
+ * actions
  */
+// side effects actions, like API request
+ export const incrementAsync = createAsyncThunk(
+  'counter/incrementAsync',
+  async (s: number) => {
+    const response = await fetchCount(s);
+    return response.data;
+  }
+);
+
+// common actions generated according to common reducers
 export const {increment, decrement} = counterSlice.actions;
+
 
 /**
  * deault export
