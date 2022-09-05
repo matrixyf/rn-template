@@ -1,13 +1,12 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import { store } from './store';
-import Counter from './features/couter';
+import Navigation from './navigation';
 
 const App = () => {
-
   return (
     <Provider store={store}>
-      <Counter />
+      <Navigation />
     </Provider>
   );
 };
