@@ -9,6 +9,7 @@ import { Locales, SetAppLocaleContext } from './locales';
 const App = () => {
 
   const [appLocale, setAppLocale] = useState('en-US');
+  console.log(`appLocale`, appLocale);
 
   return (
     <SetAppLocaleContext.Provider value={setAppLocale}>
