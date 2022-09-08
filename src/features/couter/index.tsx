@@ -1,3 +1,4 @@
+import { Toast } from '@ant-design/react-native';
 import React, { useContext } from 'react';
 import { useState } from "react";
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -76,6 +77,7 @@ export default function Counter() {
         title={intl.formatMessage({id: 'increment async'})}
         onPress={() => {
           incAsync(Number(step) || 1);
+          Toast.info('This is a toast tips');
         }}
       />
       <Button
