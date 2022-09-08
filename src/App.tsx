@@ -6,7 +6,6 @@ import { store } from './store';
 import Navigation from './navigation';
 import { Locales, SetAppLocaleContext } from './locales';
 
-
 const App = () => {
 
   const [appLocale, setAppLocale] = useState('en-US');
